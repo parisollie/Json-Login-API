@@ -10,13 +10,17 @@
 import SwiftUI
 
 struct Login: View {
-    // Vid 128
+    // V-128,Paso 1.14
     @State private var email = ""
     @State private var password = ""
-    @State private var isPasswordVisible = false // Estado para mostrar u ocultar contraseña
+    // Estado para mostrar u ocultar contraseña
+    @State private var isPasswordVisible = false
+    
+    //V-127,Paso 1.11 varaiable para el login
     @EnvironmentObject var login: PostViewModel
     
     var body: some View {
+        //Paso 1.17
         ZStack {
             // Fondo con degradado para mejor estética
             LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -31,6 +35,7 @@ struct Login: View {
                     .padding(.bottom, 20)
                 
                 VStack(alignment: .leading, spacing: 10) {
+                    //Paso 1.18
                     Text("Email")
                         .foregroundColor(.white)
                         .bold()
@@ -43,6 +48,7 @@ struct Login: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 10) {
+                    //paso 1.19
                     Text("Password")
                         .foregroundColor(.white)
                         .bold()
@@ -65,9 +71,10 @@ struct Login: View {
                 }
                 
                 Button(action: {
-                    // Mandamos a llamar a login
+                    //Paso 1.21 Mandamos a llamar a login
                     login.login(email: email, password: password)
                 }) {
+                    //Paso 1.20
                     Text("Entrar")
                         .frame(maxWidth: .infinity)
                         .padding()

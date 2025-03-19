@@ -6,16 +6,17 @@
 //
 
 import Foundation
-//Vid 133
+//V-133,paso 3.0
 struct Modelo2 : Decodable {
     var data : [UserList]
 }
-//Vid135,accedemos a otro tipo de lista dentro de la estructura 
+//V-135,accedemos a otro tipo de lista dentro de la estructura 
 struct User : Decodable{
     var data : UserList
 }
-//Vid133, creamos nuestra estructura
+//Paso 3.1, creamos nuestra estructura
 struct UserList : Decodable {
+    //Ponemos sus campos
     var id : Int
     var first_name : String
     var email : String

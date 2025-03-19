@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    //Vid 129
+    //V-129,Paso 1.22
     @EnvironmentObject var login : PostViewModel
     
-    //Vid 129
+    //Paso 1.23
     var body: some View {
         Group{
-            //Si estamos en cero estamos en la pantalla de login
+            //Si estamos en cero estamos en la pantalla de login.
             if login.authenticated == 0 {
                 //Mandamos al login
                 Login()
             }else if login.authenticated == 1 {
-                //Si todo salio bien , nos vamos al Home 
+                //Si todo salio bien, nos vamos al Home.
                 Home()
             }else if login.authenticated == 2 {
                 VStack{
@@ -38,6 +38,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(PostViewModel()) // Se agrega para evitar el error
+            // Se agrega para evitar el error
+            .environmentObject(PostViewModel())
     }
 }

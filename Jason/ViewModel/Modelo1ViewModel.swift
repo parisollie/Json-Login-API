@@ -4,35 +4,39 @@
 //
 //  Created by Paul Jaime Felix Flores on 24/04/23.
 //
-//Vid133
+
 import Foundation
 
 class Modelo1ViewModel: ObservableObject {
-    //Vid 131,mandamos a llamar a nuestra estructura,la cual esta vacia
+    //V-131,paso 2.7,mandamos a llamar a nuestra estructura,la cual esta vacia
     @Published var datosModelo : [Modelo1] = []
-    //Vid 131 Se ejecutara cuando se inicia
+    
+    //Paso 2.8 Se ejecutara cuando se inicia
     init(){
         fetch()
     }
-    //Vid 131
+    
+    //Paso 2.9
     func fetch(){
-        //Vid 131 Tenemos nuestra URL
+        //Ponemos nuestra URL, Tenemos nuestra URL
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else { return  }
-        //Vid 131 , traemos el dato de data
+        
+        //Paso 2.10,traemos el dato de data
         URLSession.shared.dataTask(with: url){data,_,_ in
-            
+            //Paso 2.12
             guard let data = data else { return }
             do{
-                //Vid 131 Usamos corchetes porque traeremos mas modelos
+                //Paso 2.13,Usamos corchetes porque traeremos más modelos
                 let json = try JSONDecoder().decode([Modelo1].self, from: data)
-                //Vid 131 Dispatchque ,cuando traemos datos de internet
+                
+                //Paso 2.14,Dispatchque ,cuando traemos datos de internet
                 DispatchQueue.main.async {
                     self.datosModelo = json
                 }
             }catch let error as NSError{
                 print("Error en el json", error.localizedDescription)
             }
-           //Vid 131, ejecutamos el resume
+           //Paso 2.11,ejecutamos el resume
         }.resume()
     }
     

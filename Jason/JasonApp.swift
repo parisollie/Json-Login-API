@@ -10,10 +10,10 @@ import SwiftUI
 @main
 struct JasonApp: App {
     var body: some Scene {
-        //Vid128
+        //V-128,paso 1.15
         let login = PostViewModel()
         WindowGroup {
-            //Vid128, proparemos esta variable por todo el content view 
+            //Paso 1.16,propagaremos esta variable por todo el content view.
             ContentView().environmentObject(login)
         }
     }

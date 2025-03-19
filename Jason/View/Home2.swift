@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct Home2: View {
+    //Paso 3.4
     @StateObject var json2 = Modelo2ViewModel()
 
     var body: some View {
-        NavigationView {
+            //NavigationView {
             ZStack {
                 // Fondo con degradado en la parte superior
                 LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.purple.opacity(0.6)]),
                                startPoint: .top,
                                endPoint: .center)
                     .edgesIgnoringSafeArea(.all)
-                
+                //paso 3.5
                 if json2.datosModelo.data.isEmpty {
-                    //Vid 133, cargador
+                    //cargador
                     ProgressView()
                 } else {
+                    //paso 3.6
                     List(json2.datosModelo.data, id:\.id) { item in
                         //Vid135, navegación al detalle
                         NavigationLink(destination: DetalleView(id: item.id)) {
+                            //Paso 3.7
                             HStack(spacing: 16) {
                                 // Imagen redonda con borde
                                 Image(systemName: "persona.fill")
@@ -35,7 +38,7 @@ struct Home2: View {
                                     .clipShape(Circle())
                                     .overlay(Circle().stroke(Color.white, lineWidth: 2))
                                 
-                                // Datos alineados a la izquierda
+                                //Paso 3.8 Datos alineados a la izquierda
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text(item.first_name)
                                         .font(.title2)
@@ -56,10 +59,11 @@ struct Home2: View {
                     }
                     .background(Color.clear)
                     .scrollContentBackground(.hidden)
+                    //Paso 3.9
                     .navigationBarTitle("JSON CON IMAGEN", displayMode: .inline)
                 }
             }
-        }
+      //  }//FIn Navigation
     }
 }
 
