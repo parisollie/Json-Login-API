@@ -26,17 +26,18 @@ struct Home2: View {
                 } else {
                     //paso 3.6
                     List(json2.datosModelo.data, id:\.id) { item in
-                        //Vid135, navegación al detalle
+                        //V-135,paso 3.14 navegación al detalle
                         NavigationLink(destination: DetalleView(id: item.id)) {
                             //Paso 3.7
                             HStack(spacing: 16) {
                                 // Imagen redonda con borde
                                 Image(systemName: "persona.fill")
+                                    //Paso 3.12
                                     .data(url: URL(string: item.avatar)!)
                                     .frame(width: 80, height: 80)
                                     .clipped()
                                     .clipShape(Circle())
-                                    .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                                    .overlay(Circle().stroke(Color.purple, lineWidth: 2))
                                 
                                 //Paso 3.8 Datos alineados a la izquierda
                                 VStack(alignment: .leading, spacing: 5) {
@@ -67,7 +68,7 @@ struct Home2: View {
     }
 }
 
-//Vid 134, hacemos una extensión para cargar la imagen desde una URL
+//V-134,Paso 3.11 hacemos una extensión para cargar la imagen desde una URL ya que es string
 extension Image {
     func data(url: URL) -> Self {
         if let data = try? Data(contentsOf: url) {

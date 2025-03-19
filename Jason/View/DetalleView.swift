@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct DetalleView: View {
-    //Vid 135 , traemos el id
+    //V-135 ,paso 3.13 traemos el id
     var id: Int
+    //paso 3.20
     @StateObject var user = DetalleViewModel()
     
     var body: some View {
@@ -21,14 +22,15 @@ struct DetalleView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                //paso 3.24
                 if user.avatar.isEmpty {
-                    //Vid 135, indicador de carga
+                    //indicador de carga
                     ProgressView()
                         .scaleEffect(1.5)
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 } else {
                     VStack(spacing: 15) {
-                        //Vid 135, imagen de usuario con mejoras visuales
+                        //Paso 3.22 imagen de usuario con mejoras visuales
                         Image(systemName: "person.fill")
                             .data(url: URL(string: user.avatar)!)
                             .frame(width: 130, height: 130)
@@ -37,7 +39,7 @@ struct DetalleView: View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 4))
                             .shadow(radius: 10)
                         
-                        //Vid 135, información del usuario dentro de una tarjeta
+                        //Paso 3.23,información del usuario dentro de una tarjeta
                         VStack(spacing: 8) {
                             Text(user.first_name)
                                 .font(.title)
@@ -54,7 +56,7 @@ struct DetalleView: View {
                         .cornerRadius(12)
                         .shadow(radius: 10)
                         
-                        //Vid 135, botón estilizado
+                        //Paso 3.26, botón estilizado
                         Button(action: {
                             // Acción del botón (Ej: cerrar vista o regresar)
                         }) {
@@ -73,8 +75,9 @@ struct DetalleView: View {
                 }
             }
         }
+        //Paso 3.21
         .onAppear {
-            //Vid 135, obtenemos los datos del usuario
+            //obtenemos los datos del usuario
             user.fetch(id: id)
         }
     }

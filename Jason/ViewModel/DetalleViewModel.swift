@@ -5,17 +5,17 @@
 //  Created by Paul Jaime Felix Flores on 24/04/23.
 //
 
-//Vid135
+//V-135,paso 3.15
 import Foundation
 
 class DetalleViewModel: ObservableObject {
-    //Para descargar los datos ,hacemos variables
+    //Paso 3.18 Para descargar los datos ,hacemos variables
     @Published var first_name = ""
     @Published var email = ""
     @Published var avatar = ""
     
     func fetch(id: Int){
-        //Vid 135 Le mandamos el id
+        //Paso 3.16 Le mandamos el id y se lo concatenamos con la diagonal invertida
         guard let url = URL(string: "https://reqres.in/api/users/\(id)") else { return  }
         
         URLSession.shared.dataTask(with: url){data,_,_ in
@@ -24,7 +24,7 @@ class DetalleViewModel: ObservableObject {
             do{
                 let json = try JSONDecoder().decode(User.self, from: data)
                 DispatchQueue.main.async {
-                    //Vid 135, accedemos a las variables con cada uno de los campos 
+                    //Paso 3.19, accedemos a las variables con cada uno de los campos 
                     self.first_name = json.data.first_name
                     self.email = json.data.email
                     self.avatar = json.data.avatar

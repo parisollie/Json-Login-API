@@ -10,7 +10,7 @@ import Foundation
 struct Modelo2 : Decodable {
     var data : [UserList]
 }
-//V-135,accedemos a otro tipo de lista dentro de la estructura 
+//V-135,paso 3.17 accedemos a otro tipo de lista dentro de la estructura
 struct User : Decodable{
     var data : UserList
 }
